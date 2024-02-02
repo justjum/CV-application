@@ -1,10 +1,12 @@
 import { useState } from "react";
+import Icon from '@mdi/react'
+import { mdiPlusThick } from '@mdi/js'
 
 export default function Education( { addEducation } ) {
 
     const [newEd, setNewEd] = useState({key: 0});
 
-    const [popUp, setPopUp] = useState(false);
+    const [edPop, setEdPop] = useState(false);
 
     function saveEducation(e) {
         e.preventDefault();
@@ -13,7 +15,7 @@ export default function Education( { addEducation } ) {
     }
 
     function educationPopup() {
-        setPopUp((popUp) => popUp = !popUp);
+        setEdPop((edPop) => edPop = !edPop);
     }
     
 
@@ -36,10 +38,9 @@ export default function Education( { addEducation } ) {
 
 
     return  <div id='education-component'>
-                <h2>Education</h2>
-                <button onClick={educationPopup} >Add Education</button>
-                <div className="education-popup" id='education-popup' style={{display: popUp ? 'inline' : 'none'}}>
-                    <form action="POST" id='education-form' name='education-form'>
+                <button onClick={educationPopup} ><Icon path={mdiPlusThick} size={1} /></button>
+                <div className="education-popup" id='education-popup' style={{display: edPop ? 'inline' : 'none'}}>
+                    <form action="" id='education-form' name='education-form'>
                         <Input type='number' id='end-year' onChange={updateEndYear}/>
                         <Input type='text' id='school' name='school' onChange={updateSchool}/>
                         <Input type='text' id='course' name='course' onChange={updateCourse} />
@@ -57,7 +58,8 @@ function Input( {id, type, onChange} ) {
                 <label htmlFor={id}>{id}: </label>
                 <input 
                     type={type}
-                    onChange={onChange} />
+                    onChange={onChange}
+                    id={id} />
             </>
 }
 
