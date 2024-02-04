@@ -4,7 +4,7 @@ import { mdiPlusThick } from '@mdi/js'
 
 export default function Education( { addEducation } ) {
 
-    const [newEd, setNewEd] = useState({key: 0});
+    const [newEd, setNewEd] = useState({key: crypto.randomUUID()});
 
     const [edPop, setEdPop] = useState(false);
 
@@ -32,7 +32,7 @@ export default function Education( { addEducation } ) {
     }
 
     function updateData() {
-        setNewEd((oldEducation) => ({...oldEducation, key: oldEducation.key+1}));
+        setNewEd((oldEducation) => ({...oldEducation, key: crypto.randomUUID()}));
         addEducation(newEd)
     }
 
@@ -50,6 +50,7 @@ export default function Education( { addEducation } ) {
                 </div>
             </div>
 }
+
 
 function Input( {id, type, onChange} ) {
 

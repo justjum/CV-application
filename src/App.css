@@ -5,6 +5,39 @@
   text-align: center;
 }
 
-ul {
+p {
+  margin: 0;
+}
+
+ul, li {
+  text-decoration: none;
+  list-style: none;
+}
+
+button > * {
+  pointer-events: none;
+}
+
+.edit-button {
+  padding: 0;
+}
+
+.edit-button > * {
+  pointer-events: none;
+}
+
+.edit-input, .edit-input:focus {
   text-decoration: none;
 }
+
+.skill-item {
+  display: flex;
+  border: 1px solid steelblue;
+  border-radius: 5px;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  margin: 3px;
+  padding: 5px;
+}
+

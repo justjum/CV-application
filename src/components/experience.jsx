@@ -14,8 +14,7 @@ export default function Experience( { addExperience }) {
     function saveWork(event) {
         event.preventDefault();
         const form = document.getElementById('experience-form');
-        console.log(form.startDate.value)
-        const newWork = {start: form.startDate.value, end: form.endDate.value, employer: form.employer.value, position: form.position.value}
+        const newWork = {key: crypto.randomUUID(), start: form.startDate.value, end: form.endDate.value, employer: form.employer.value, position: form.position.value}
         addExperience(newWork);
         workPopup();
     }   
