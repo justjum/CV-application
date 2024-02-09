@@ -18,7 +18,6 @@ export default function Skills( { addSkill, skills, editSkill, saveSkill } ) {
 
     function handleSaveSkill(name, inEdit) {
         const skill = {name: name, inEdit: inEdit}
-        console.log(skill);
         addSkill(skill);
         handleSkillsView();
     }
@@ -26,9 +25,8 @@ export default function Skills( { addSkill, skills, editSkill, saveSkill } ) {
 
     return  <div id='skills-component'>
             <h3>Skills:</h3>
-                {console.log(skills)}   
                 {skills.map((skill) => (
-                    <Skill skill={skill} handNewSkill={handleNewSkill} handleEditSkill={editSkill} handleSaveSkill={saveSkill} key={skill.key} save={true}/>
+                    <Skill skill={skill} handleNewSkill={handleNewSkill} handleEditSkill={editSkill} handleSaveSkill={saveSkill} key={skill.key} save={true}/>
 
                 ))}
                 <button onClick={handleSkillsView}><Icon path={mdiPlusThick} size={1} /></button>

@@ -26,18 +26,71 @@ function App() {
     setPerson((oldPerson) => ({ ...oldPerson, phone: e.target.value }));
   }
 
-  const [education, setEducation] = useState([]);
+  const [education, setEducation] = useState([{key: crypto.randomUUID(), inEdit:false, school: 'Monash University', endYear: 2022, course: 'Computer Science'}]);
 
   function addEducation(newEd) {
     setEducation([...education, newEd]);
     console.log(education);
   }
 
-  const [experience, setExperience] = useState([]);
+  function editEducation(event) {
+    event.preventDefault();
+    console.log(event)
+    education.map((education) => {
+      if(education.key===event.target.id) {
+        education.inEdit=!education.inEdit;
+      }
+    });
+    setEducation([...education])
+    console.log(education)
+  }
+
+  function updateEducation(e) {
+    e.preventDefault();
+    console.log(e)
+    education.map((education) => {
+      if(education.key===e.target.id) {
+        education.endYear=e.target[0].value;
+        education.school=e.target[1].value;
+        education.course=e.target[2].value;
+        education.inEdit=!education.inEdit;
+      }
+    });
+    setEducation([...education])
+  }
+
+  const [experience, setExperience] = useState([{key: crypto.randomUUID(), inEdit: false, start: "2022-12-04", end: "2023-12-17", employer: "Google", position: "Coffee Kid"}]);
 
   function addExperience(newExp) {
     setExperience([...experience, newExp]);
     console.log(experience);
+  }
+
+  function editExperience(e) {
+    e.preventDefault();
+    experience.map((work) => {
+      if (work.key === e.target.id) {
+        work.inEdit=!work.inEdit;
+      }
+    })
+    setExperience([...experience])
+    console.log(experience)
+  }
+
+  function updateExperience(e) {
+    e.preventDefault();
+    experience.map((work) => {
+      if(work.key===e.target.id) {
+        console.log(e.target.startDate.value)
+        work.start=e.target.startDate.value;
+        work.end=e.target.endDate.value;
+        work.employer=e.target.employer.value;
+        work.position=e.target.position.value;
+        work.inEdit=!work.inEdit;
+      }
+    });
+    setExperience([...experience])
+    console.log(experience)
   }
 
   const [skills, setSkills] = useState([{key: crypto.randomUUID(), name: 'Javascript', inEdit: false},{key:crypto.randomUUID(), name: 'React', inEdit:false}, {key:crypto.randomUUID(), name: 'HTML', inEdit: false}]);
@@ -55,12 +108,10 @@ function App() {
     }
     );
     setSkills([...skills])
-    console.log(skills);
   };
 
   function saveSkill(event) {
     event.preventDefault();
-    console.log(event);
     skills.map((skill) => {
       if(skill.key===event.target.id) {
         skill.name=event.target[0].value;
@@ -68,7 +119,6 @@ function App() {
       }
     });
     setSkills([...skills])
-    console.log(skills);
   }
 
 
@@ -87,31 +137,12 @@ function App() {
         <h4>Phone: {currentPerson.phone}</h4>
         <div>
           <h3>Education:</h3>
-          <Education education={education} addEducation={addEducation} />
-          {education.map((course) => (
-            <ul>
-              <li key={course.key}>
-                {course.endYear} <em>{course.school}</em> {course.course}{" "}
-                <button>
-                  <Icon path={mdiPencil} size={0.75} />
-                </button>{" "}
-              </li>
-            </ul>
-          ))}
+          <Education education={education} addEducation={addEducation} editEducation={editEducation} updateEducation={updateEducation}/>
         </div>
         <div>
           <h3>Experience</h3>
-          <Experience experience={experience} addExperience={addExperience} />
-          {experience.map((work) => (
-            <ul>
-              <li key={work.key}>
-                {work.start} {work.end} {work.employer} {work.position}{" "}
-                <button>
-                  <Icon path={mdiPencil} size={0.75} />
-                </button>{" "}
-              </li>
-            </ul>
-          ))}
+          <Experience experience={experience} addExperience={addExperience} editExperience={editExperience} updateExperience={updateExperience}/>
+          
         </div>
         <div>
 

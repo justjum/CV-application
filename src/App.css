@@ -30,6 +30,26 @@ button > * {
   text-decoration: none;
 }
 
+.education-card, .experience-card {
+  display: flex;
+  border: 1px solid steelblue;
+  border-radius: 5px;
+  min-width: 450px;
+  width: fit-content;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3px;
+  padding: 5px;
+}
+
+.education-card > * {
+  pointer-events: none;
+}
+
+.experience-card > * {
+  pointer-events: none;
+}
+
 .skill-item {
   display: flex;
   border: 1px solid steelblue;

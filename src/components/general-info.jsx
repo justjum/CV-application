@@ -6,7 +6,7 @@ export default function General( {updateName, updatePhone, updateEmail}) {
 
    return   <>
                 <div className='general-input'>
-                    <h3>General Info</h3>
+                    <h3>General Info:</h3>
                     <Input type='name' id='name' onChange={updateName}/>
                     <Input type='email' id='email' onChange={updateEmail} />
                     <Input type='number' id='number' onChange={updatePhone} />
