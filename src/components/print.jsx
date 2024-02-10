@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import { mdiCardAccountMailOutline, mdiCardAccountPhoneOutline } from '@mdi/js';
 import React, { useRef } from 'react';
-import { format}  from 'date-fns'
+import format from 'date-fns/format'
 
 
 export default function Print( { currentPerson, education, skills, experience } ) {
