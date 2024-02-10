@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
 import { mdiCardAccountMailOutline, mdiCardAccountPhoneOutline } from '@mdi/js';
 import React, { useRef } from 'react';
-import format from 'date-fns/format'
+//import format from 'date-fns/format'
 
 
 export default function Print( { currentPerson, education, skills, experience } ) {
@@ -71,7 +71,7 @@ function Schooling( { course }) {
 function Experience( { position } ) {
     return (
         <>
-            <p>{format(position.start, 'dd/mm/yyyy')} - {format(position.end, 'dd/mm/yyyy')}</p>
+            <p>{position.start} - {position.end}</p>
             <p><b>{position.employer}</b> </p>
             <p>{position.position} </p>
         </>
@@ -85,3 +85,7 @@ function Skills ( {skill} ) {
         </>
     )
 }
+
+
+//date-fns formatting
+// <p>{format(position.start, 'dd/mm/yyyy')} - {format(position.end, 'dd/mm/yyyy')}</p>
