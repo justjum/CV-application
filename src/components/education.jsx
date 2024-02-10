@@ -96,6 +96,7 @@ function Input( {id, type, onChange, defaultValue} ) {
                     onChange={onChange}
                     id={id} 
                     defaultValue={defaultValue}
+                    required
                   />
                     
             </>

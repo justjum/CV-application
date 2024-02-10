@@ -1,17 +1,29 @@
 #root {
-  max-width: 1280px;
+  display: flex;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  gap: 10px;
 }
 
 p {
   margin: 0;
+  text-align: start;
 }
 
 ul, li {
   text-decoration: none;
   list-style: none;
+  margin: 20px;
+}
+
+h1, h2, h3, h4 {
+  text-align: start;
+  margin: 10px;
+}
+
+.title {
+  text-align: center;
 }
 
 button > * {
@@ -61,3 +73,63 @@ button > * {
   padding: 5px;
 }
 
+.print-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 150px 1fr 1fr 1fr;
+  row-gap: 10px;
+  width: 1025px;
+  height: 1450px;
+  border: solid 3px steelblue;
+  border-radius: 5px;
+  justify-items: auto;
+  padding: 10px;
+  background-color: rgb(176, 219, 255);
+}
+
+.general-left {
+  justify-self: start;
+  padding: 20px;
+  
+}
+
+.general-right {
+  justify-self: end;
+  margin: 20px;
+}
+
+.education-print, .experience-print {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: rgb(255, 252, 247);
+  border-radius: 5px;
+}
+
+.skills-print {
+  background-color: rgb(255, 252, 247);
+  border-radius: 5px;
+}
+
+.print-button {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  width: fit-content;
+  height: fit-content;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  background-color: rgb(176, 219, 255);
+}
+
+
+@media print {
+  body {
+    visibility: hidden;
+  }
+  .print-layout {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
